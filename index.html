@@ -59,41 +59,27 @@
             margin-bottom: 25px;
         }
         
-        .gif-container {
+        .image-container {
             margin-bottom: 20px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             position: relative;
-            cursor: pointer;
+            display: flex;
+            justify-content: center;
         }
         
-        .gif-image {
-            width: 70%;
-            height: 200px;
+        .profile-image {
+            width: 200px;
+            height: 120px;
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .gif-container:hover .gif-image {
-            transform: scale(1.05);
-        }
-        
-        .gif-overlay {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
             border-radius: 15px;
-            font-size: 12px;
-            animation: pulse 2s infinite;
+            transition: transform 0.3s ease;
+            border: 4px solid rgba(255, 255, 255, 0.8);
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+        .image-container:hover .profile-image {
+            transform: scale(1.05);
         }
         
         h1 {
@@ -101,17 +87,19 @@
             margin-bottom: 10px;
             font-size: 22px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #8b4513, #d2691e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            font-weight: bold;
         }
         
         .subtitle {
-            color: #666;
+            color: #333;
             font-size: 14px;
             margin-bottom: 20px;
             font-style: italic;
+            font-weight: 600;
         }
         
         .quick-templates {
@@ -123,20 +111,21 @@
         }
         
         .template-btn {
-            padding: 6px 12px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 8px 14px;
+            background: linear-gradient(45deg, #8b4513, #cd853f);
             color: white;
             border: none;
             border-radius: 15px;
             font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 3px 10px rgba(139, 69, 19, 0.3);
+            font-weight: bold;
         }
         
         .template-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.5);
         }
         
         .input-group {
@@ -148,7 +137,7 @@
             display: flex;
             align-items: center;
             margin-bottom: 8px;
-            color: #555;
+            color: #333;
             font-weight: bold;
             font-size: 14px;
         }
@@ -161,7 +150,7 @@
         .input-field {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #d2691e;
             border-radius: 15px;
             font-size: 15px;
             transition: all 0.3s ease;
@@ -171,8 +160,8 @@
         
         .input-field:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+            border-color: #8b4513;
+            box-shadow: 0 0 15px rgba(139, 69, 19, 0.3);
             transform: translateY(-2px);
         }
         
@@ -185,8 +174,9 @@
         .char-counter {
             text-align: right;
             font-size: 12px;
-            color: #888;
+            color: #666;
             margin-top: 5px;
+            font-weight: bold;
         }
         
         .action-buttons {
@@ -209,7 +199,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-width: 120px;
+            min-width: 140px;
         }
         
         .btn-whatsapp {
@@ -219,15 +209,9 @@
         }
         
         .btn-copy {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #8b4513, #cd853f);
             color: white;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-clear {
-            background: linear-gradient(135deg, #ff7675, #fd79a8);
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 118, 117, 0.4);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.4);
         }
         
         .btn:hover {
@@ -256,6 +240,7 @@
             transform: translateX(400px);
             transition: transform 0.3s ease;
             z-index: 1000;
+            font-weight: bold;
         }
         
         .toast.show {
@@ -301,8 +286,9 @@
                 font-size: 20px;
             }
             
-            .gif-image {
-                height: 180px;
+            .profile-image {
+                width: 180px;
+                height: 110px;
             }
             
             .action-buttons {
@@ -319,7 +305,7 @@
             
             .template-btn {
                 font-size: 11px;
-                padding: 5px 10px;
+                padding: 6px 10px;
             }
         }
     </style>
@@ -329,16 +315,21 @@
     
     <div class="container">
         <div class="header">
-            <div class="gif-container" onclick="changeGif()">
-                <img src="/maraj.jpg" alt="शुभकामना GIF" class="gif-image" id="gifImage">
-                <div class="gif-overlay">🔄 Click to change</div>
+            <div class="image-container">
+                <img src="maraj.jpg" alt="छत्रपति शिवाजी महाराज" class="profile-image" id="profileImage">
             </div>
             
-            <h1>💝 शुभकामना भेजक</h1>
-            <p class="subtitle">अपनी खुशियां सबके साथ बांटें ✨</p>
+            <h1>🙏 छत्रपति शिवाजी महाराज</h1>
+            <p class="subtitle">वीर शिवाजी के आदर्शों को अपनाएं ⚔️</p>
         </div>
         
-        
+        <div class="quick-templates">
+            <button class="template-btn" onclick="loadTemplate('birthday')">🎂 जन्मदिन</button>
+            <button class="template-btn" onclick="loadTemplate('festival')">🎉 त्योहार</button>
+            <button class="template-btn" onclick="loadTemplate('newyear')">🎊 नया साल</button>
+            <button class="template-btn" onclick="loadTemplate('success')">🏆 सफलता</button>
+            <button class="template-btn" onclick="loadTemplate('shivaji')">⚔️ शिवाजी</button>
+        </div>
         
         <div class="input-group">
             <label class="input-label">
@@ -353,11 +344,14 @@
                 <span class="emoji">💌</span>
                 आपकी शुभकामनाएं:
             </label>
-            <textarea id="wishMessage" class="input-field textarea-field" placeholder="अपनी प्यारी शुभकामनाएं यहाँ लिखें..." maxlength="500">🌟 आपको और आपके परिवार को ढेर सारी खुशियां मिलें!
-🎊 जीवन में सफलता और समृद्धि आए!
-💫 हर दिन नई उमंग और नई खुशी लेकर आए!
+            <textarea id="wishMessage" class="input-field textarea-field" placeholder="अपनी प्यारी शुभकामनाएं यहाँ लिखें..." maxlength="500">🚩 हर हर महादेव! 🙏
 
-शुभकामनाओं सहित... ❤️</textarea>
+🌟 छत्रपति शिवाजी महाराज के आदर्शों की तरह
+⚔️ आपका जीवन भी वीरता और न्याय से भरा हो!
+🏰 स्वराज्य की भावना आपके दिल में बनी रहे!
+💫 शिवरायांच्या मार्गावर चालत राहा!
+
+जय भवानी! जय शिवाजी! 🚩</textarea>
             <div class="char-counter" id="charCounter">0/500</div>
         </div>
         
@@ -370,17 +364,12 @@
                 <span class="btn-icon">📋</span>
                 Copy करें
             </button>
-            <button class="btn btn-clear" onclick="clearAll()">
-                <span class="btn-icon">🗑️</span>
-                Clear करें
-            </button>
         </div>
     </div>
 
     <div class="toast" id="toast"></div>
 
     <script>
-        
         // Message templates
         const templates = {
             birthday: `🎂 जन्मदिन मुबारक हो! 🎉
@@ -397,7 +386,7 @@
 
 शुभ त्योहार! 🎉`,
             
-            newyear: `🎊 नए साल की शुभकामनाएं! 2024 🎆
+            newyear: `🎊 नए साल की शुभकामनाएं! 2025 🎆
 ✨ नया साल आपके लिए नई खुशियां लेकर आए!
 🌟 सभी सपने साकार हों!
 💫 सफलता आपके कदम चूमे!
@@ -413,28 +402,23 @@ Happy New Year! 🥳`,
 
 सफलता की हार्दिक बधाई! 🎊`,
             
-            general: `🌟 आपको ढेर सारी शुभकामनाएं! ✨
-💝 जीवन में खुशियां ही खुशियां हों!
-🌈 हर दिन एक नया उपहार लेकर आए!
-🙏 भगवान का आशीर्वाद हमेशा बना रहे!
-💫 प्यार और खुशी से भरा रहे जीवन!
+            shivaji: `🚩 हर हर महादेव! 🙏
 
-शुभकामनाओं सहित! ❤️`
+⚔️ छत्रपति शिवाजी महाराज के जैसे
+🏰 आपका जीवन भी वीरता से भरा हो!
+🌟 धर्म और न्याय का मार्ग अपनाएं!
+💪 स्वाभिमान और साहस से जीएं!
+🙏 माता भवानी का आशीर्वाद बना रहे!
+
+जय भवानी! जय शिवाजी! 🚩`
         };
         
         // Load template
         function loadTemplate(type) {
             document.getElementById('wishMessage').value = templates[type];
             updateCharCounter();
-            showToast(`${type} template लोड हो गया! 📝`);
+            showToast(`${type} संदेश लोड हो गया! 📝`);
             createFloatingEmojis();
-        }
-        
-        // Change GIF
-        function changeGif() {
-            currentGifIndex = (currentGifIndex + 1) % gifs.length;
-            document.getElementById('gifImage').src = gifs[currentGifIndex];
-            showToast('नई GIF लोड हो गई! 🎬');
         }
         
         // Update character counter
@@ -444,11 +428,11 @@ Happy New Year! 🥳`,
             counter.textContent = `${message.length}/500`;
             
             if (message.length > 450) {
-                counter.style.color = '#ff7675';
+                counter.style.color = '#dc143c';
             } else if (message.length > 350) {
-                counter.style.color = '#fdcb6e';
+                counter.style.color = '#ff8c00';
             } else {
-                counter.style.color = '#888';
+                counter.style.color = '#666';
             }
         }
         
@@ -457,17 +441,12 @@ Happy New Year! 🥳`,
             const senderName = document.getElementById('senderName').value.trim();
             const wishMessage = document.getElementById('wishMessage').value.trim();
             
-            if (!senderName) {
-                showToast('कृपया अपना नाम लिखें! 👤', 'error');
-                return;
-            }
-            
             if (!wishMessage) {
                 showToast('कृपया अपनी शुभकामनाएं लिखें! 💌', 'error');
                 return;
             }
             
-            const fullMessage = `${wishMessage}\n\n- ${senderName}`;
+            const fullMessage = senderName ? `${wishMessage}\n\n- ${senderName}` : wishMessage;
             const encodedMessage = encodeURIComponent(fullMessage);
             const whatsappURL = `https://wa.me/?text=${encodedMessage}`;
             
@@ -490,26 +469,17 @@ Happy New Year! 🥳`,
             
             navigator.clipboard.writeText(fullMessage).then(() => {
                 showToast('संदेश copy हो गया! 📋');
+                createFloatingEmojis();
             }).catch(() => {
                 showToast('Copy नहीं हो सका! 😞', 'error');
             });
-        }
-        
-        // Clear all fields
-        function clearAll() {
-            if (confirm('क्या आप सब कुछ clear करना चाहते हैं?')) {
-                document.getElementById('senderName').value = '';
-                document.getElementById('wishMessage').value = '';
-                updateCharCounter();
-                showToast('सब कुछ clear हो गया! 🗑️');
-            }
         }
         
         // Show toast notification
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
-            toast.style.background = type === 'error' ? '#ff7675' : '#25D366';
+            toast.style.background = type === 'error' ? '#dc143c' : '#25D366';
             toast.classList.add('show');
             
             setTimeout(() => {
@@ -519,10 +489,10 @@ Happy New Year! 🥳`,
         
         // Create floating emojis
         function createFloatingEmojis() {
-            const emojis = ['🎉', '✨', '💫', '🌟', '💝', '🎊', '🌈', '💖'];
+            const emojis = ['🚩', '⚔️', '🏰', '👑', '🙏', '✨', '💫', '🌟'];
             const container = document.getElementById('floatingEmojis');
             
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 6; i++) {
                 setTimeout(() => {
                     const emoji = document.createElement('div');
                     emoji.className = 'floating-emoji';
@@ -536,7 +506,7 @@ Happy New Year! 🥳`,
                             emoji.parentNode.removeChild(emoji);
                         }
                     }, 6000);
-                }, i * 200);
+                }, i * 300);
             }
         }
         
@@ -546,7 +516,7 @@ Happy New Year! 🥳`,
         // Initialize
         updateCharCounter();
         
-        // Add some fun interactions
+        // Add keyboard shortcut
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'Enter') {
                 sendToWhatsApp();

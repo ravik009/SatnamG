@@ -2,6 +2,8 @@
 <html lang="hi">
 
 <head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5641271205652518"
+     crossorigin="anonymous"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>💝 शुभकामना भेजक</title>
@@ -79,13 +81,15 @@
     }
 
     .profile-image {
-      width: 3050px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 15px;
-      transition: transform 0.3s ease;
-      border: 4px solid rgba(255, 255, 255, 0.8);
-    }
+  display: block; /* इमेज के नीचे अतिरिक्त स्पेस को हटाने में मदद करता है */
+  width: 100%;    /* इमेज को उसके पैरेंट कंटेनर (.image-container) की पूरी चौड़ाई लेने देगा */
+  height: auto;   /* इमेज के आस्पेक्ट रेशियो (पहलू अनुपात) को बनाए रखेगा */
+  max-width: 100%;/* यह सुनिश्चित करता है कि इमेज अपने कंटेनर से बाहर न जाए */
+  object-fit: cover; /* यह तब उपयोगी होता है जब .image-container की कोई निश्चित ऊंचाई हो या इमेज पर max-height सेट हो। height: auto के साथ, यह सुनिश्चित करेगा कि इमेज चौड़ाई के अनुसार ठीक से स्केल हो। */
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+}
 
     .image-container:hover .profile-image {
       transform: scale(1.05);
